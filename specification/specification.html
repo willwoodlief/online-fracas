@@ -1,0 +1,1713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>fracas specification</title>
+  </head>
+  <body>
+    <h1> Open Fracas In Javascript (OFJ) Specification</h1>
+    <br>
+    <h2>Main Goals</h2>
+    OFJ will have the primary goal of making Fracas playable in any
+    modern browser, and will have 2 <br>
+    main goals: <br>
+    <ul>
+      <li> &nbsp;&nbsp;&nbsp; a game completely in javascript for solo
+        play</li>
+      <li>&nbsp;&nbsp; a game shown in a browser, but played on a server
+        for multi player and ranked solo play</li>
+      <li> &nbsp;&nbsp; Players may log in with Facebook to play multi
+        player or to play a ranked game</li>
+      <li> &nbsp;&nbsp;&nbsp; A ranked game will award points for least
+        moves used, most computer players, and size of map<br>
+      </li>
+      <li> &nbsp;&nbsp;&nbsp; Multi player games start with&nbsp; lobby
+        to meet other players and start or join or watch a game, or to
+        choose ranked play</li>
+    </ul>
+    <br>
+    Because OFJ can be played in ways that can have either the games
+    based in the browser or server, it is <br>
+    necessary to design OFJ to always have the same web page, javascript
+    display no matter where the <br>
+    game is coming from.<br>
+    <br>
+    <h2> Initial game look </h2>
+    <a href="fracasmain.gif">Here is diagram of the main window</a><br>
+    <br>
+    When the page is first loaded, it will have a welcome screen,
+    explaining what it is, and links for help <br>
+    with the game, and credits. There will be a login button ( or a
+    username link), and a start button. There <br>
+    will also be a previous games played link, which will give a list of
+    played games.<br>
+    <h3>The game screen at load</h3>
+    <ul>
+      <li>The area that will have the map, and other things, will have a
+        welcome screen<br>
+      </li>
+    </ul>
+    <h3>The login button</h3>
+    <ul>
+      <li>There will be a Facebook login button.</li>
+      <li>If login button is pressed, and user successfully logs in with
+        Facebook, the log in button will be replaced by a username
+        link.&nbsp;&nbsp;&nbsp; <br>
+      </li>
+    </ul>
+    <span style="font-weight: bold;"></span>
+    <h3>The username link</h3>
+    <ul>
+      <li> The username link will have an option to see the stats for
+        that user, which will show upin a superimposed box. There will
+        also be options for reporting bugs, and going to forums. </li>
+    </ul>
+    <h3>The previous games link</h3>
+    <ul>
+      <li>&nbsp;If the user has enabled site storage, there will be a
+        box superimposed that is list of all single player games played
+        that can be reopened, or the maps used again. If the user has
+        played in network games and is logged in, there will be a list
+        of all networked games all set to the last turn the player used.
+        <br>
+      </li>
+      <li>The player can open these in read only mode in solo mode<br>
+      </li>
+      <ul>
+        <li>Can just see the map and stats</li>
+        <li>Run the program in the browser solo mode with all the
+          players being AI</li>
+        <li>The player can take over any AI before the game starts, or
+          after it</li>
+        <li>The game can be hot seated<br>
+        </li>
+      </ul>
+      <li>&nbsp;Can clone them to automatically send them to the lobby
+        with him as the admin to the new game. The game will fill in AI
+        for the other players that do not fill all the slots or the game
+        can be cloned.</li>
+      <li>The maps in all saved single player or multi player games can
+        be used to start a new single player or multi player game.
+        Clicking on the user map for new game link will start up the
+        start box, which will use the map in single player.If user is
+        logged in, will have a further option to create a new multi
+        player game using this map, and will have the game automatically
+        placed in the lobby with player as admin.</li>
+      <li>There will be an option to load the game with a plain text
+        save, if clicked there will be a pop up screen with a text area
+        , and ok and cancel button. The user can paste the code into the
+        area and press ok to load the game. <br>
+      </li>
+    </ul>
+    <h3>The help link</h3>
+    <ul>
+      <li>A help book is shown, superimposed on the game. It can be
+        brought up at any stage of the game.</li>
+    </ul>
+    <h3>The credits link</h3>
+    <ul>
+      <li>The credits link will open a pop up screen that talks about
+        this game, the earlier open fracas game, and the origonal game.</li>
+    </ul>
+    <h3>The version link</h3>
+    <ul>
+      <li>The version link will will open a pop up screen that will have
+        a web page showing each of the released versions and what makes
+        them different and known bugs. <br>
+      </li>
+      <li>A link to the bugs area will be given to report a bug or see
+        all bugs.<br>
+      </li>
+    </ul>
+    <h3>The start button</h3>
+    <ul>
+      <li> When start is clicked, there will be start box superimposed
+        on the game, with options for solo unranked play, solo ranked
+        play, or multi player. If user is not logged in, when anything
+        but solo unranked is pressed, there will be a message saying
+        that user has to log in first.</li>
+      <li>If there is a game already in progress&nbsp; a message will
+        show up asking if they want to leave current game. If no, box
+        goes away. If yes, the current game is terminated and the start
+        box is shown.</li>
+      <li>Next to the start button is a number showing how many people
+        are on the multiplayer server<br>
+      </li>
+    </ul>
+    <h4>Solo Play start</h4>
+    <ul>
+      <li>When this is clicked, start box goes away, and solo game set
+        up box is shown. When user clicks ok, a new game based in the
+        browser is shown. If user clicks cancel, the box goes away and
+        the user is back at the initial page.</li>
+      <li>In solo play, the take over AI button can be clicked for any
+        AI player, allowing for hot seating or one player playing
+        multiple positions.<br>
+      </li>
+    </ul>
+    <h4>&nbsp; Solo Ranked start&nbsp;</h4>
+    <ul>
+      <li>If solo ranked game is pressed, solo game setup box is shown,
+        when user picks options and clicks ok, a new game is started on
+        the server and the new game starts.</li>
+      <li>The take over AI buttons are not displayed.<br>
+      </li>
+    </ul>
+    <h4>Multi Player Start</h4>
+    <ul>
+      <li> If multi player is pressed, start box goes away and another
+        box( the lobby box) is superimposed on the game showing a lobby,
+        with ways to start or join or watch a game, a list of people in
+        the lobby, and a chat box.</li>
+    </ul>
+    <h3>The game set up box</h3>
+    <ul>
+      <li>The game set up box that allows the user to pick the number of
+        players, the colors of each player, the teams, the game and map
+        options and the selection of the map will be mostly like the
+        open fracas version.</li>
+      <li>There is an extra tab that allows a base 64 text saved from
+        last time to be entered, and that is decoded to the json and the
+        map and settings pulled out. Any game can be put in this way,
+        and the options and map set up.</li>
+      <ul>
+        <li>There will be radio buttons for using map only, map and
+          options, or options only.<br>
+        </li>
+      </ul>
+      <li>The multiplayer mode will also allow some slots to be AI</li>
+      <li>If a game in the multiplayer lobby is fiddled with in these
+        options, the players that have joined certain slots cannot be
+        changed to AI or closed.<br>
+      </li>
+    </ul>
+    <h3>The lobby Box</h3>
+    <ul>
+      <li>The lobby box at first sight will have a button to create a
+        new game, a chat area, and a list of all games currently on the
+        server with options to join or watch.</li>
+      <li>The new game button will open the game set up box</li>
+      <li>The admin (creator of the game) can reset the options,
+        players, colors and teams, and map as many times, even after
+        players join. Except player slots that are filled cannot be
+        subsituted for AI unless he boots the player first.<br>
+      </li>
+      <li>If watch a game is clicked, the multi player box will go away
+        and a game is shown in progress, in real time, in the browser.
+        The gui will be read only except each of the AI players will
+        have a 'take over button' next to it.</li>
+      <ul>
+        <li>Clicking a take over button will allow the player to enter
+          the game, but only after a confirmation message has been
+          okay-ed by admin of the game.</li>
+      </ul>
+      <li>If a game is joined, and all players click on start game, then
+        a new game is created on the server, and the game starts</li>
+      <ul>
+        <li>If not everyone clicks on the start button, each player's
+          start click will go away if their web page does not ping the
+          server every minute.</li>
+      </ul>
+      <li>A new game can be created in the lobby, and when there are at
+        least two people the game is playable when everyone clicks
+        start.</li>
+      <ul>
+        <li>The new game uses the same game set up box as solo player<br>
+        </li>
+      </ul>
+      <li>The person who created the game has admin privileges</li>
+      <ul>
+        <li>&nbsp;Can boot players both before the game starts and after
+          the game starts</li>
+        <ul>
+          <li>Each player in the list for the game will have an x beside
+            it to boot them</li>
+        </ul>
+        <li>Can cancel the game&nbsp;</li>
+      </ul>
+      <li>Each player in the lobby is represented by their Facebook
+        picture</li>
+      <li>The chat box is always seen in the lobby box</li>
+      <ul>
+        <li>The chat box is updated every few seconds, and allows people
+          to talk to each <br>
+          other. </li>
+        <li>The last few entries in the chat box is always displayed,
+          irrespective of <br>
+          time.</li>
+      </ul>
+    </ul>
+    <br>
+    <h3> The game in progress</h3>
+    However the game starts, it will always have the same look and feel.
+    The game will have 5 areas to it: <br>
+    <ul>
+      <li>&nbsp;a tool bar that shows the different current command
+        options at any stage of the game </li>
+      <ul>
+        <li>&nbsp;In single player there will be a save game button
+          which saves the game at exactly that state</li>
+        <ul>
+          <li>If web storage is enabled, the game will be stored in json
+            format</li>
+          <li>If no web storage there will be an option to save the game
+            in plain text. Which is json to base64 If clicked a pop up <br>
+            screen will have a text area with the saved game text.</li>
+          <li>Both options will be available if web storage turned on</li>
+          <li>After the save game is done, game will end</li>
+        </ul>
+      </ul>
+      <li>The resign button will show up after the player has completed
+        a cycle.</li>
+      <li>If the player is watching, there is an unwatch button that
+        shows up to take off the game he is watching<br>
+      </li>
+      <li>a map area of the game that shows the map, and the player can
+        click on it to select the countries. The map will look like open
+        fracas, but there will be a pull down to show other map drawing
+        options, if enabled.</li>
+      <li>A player list</li>
+      <ul>
+        <li>shows the picture of the player, AI gets its own picture</li>
+        <li>the name of the player, the color of the player, how many
+          countries the player has and how many troops the player has. <br>
+          Also, if it is a human player, and the player has a ranking,
+          it shows the ranking of the player</li>
+        <li>player is eliminated, then the player is grayed out, but the
+          picture and rank of the human <br>
+          player can still be seen</li>
+        <li>If in a solo browser run game, each AI player will have a
+          take over button for a human player in that window to take
+          over that position.</li>
+        <li>&nbsp;If this is a multi player game, and the player is the
+          admin: there are two icons that are next <br>
+          to each human player, a warn button and a kick button.
+          Pressing warn will tell the player to <br>
+          hurry up. Pressing kick will boot the player from the game and
+          replace it with an AI</li>
+      </ul>
+      <li>A country information screen that will show the picture and
+        name of the country, its defense <br>
+        value and the player's attack value. If the player owns the
+        country, he can rename it.</li>
+      <li>A area to select how many troops to move.<br>
+      </li>
+    </ul>
+    <br>
+    <h3> Independence from the game controller:</h3>
+    &nbsp;&nbsp; &nbsp;Because a game can played locally or on a server,
+    the gui of the game itself will be message <br>
+    driven. It will not know if these messages come in through ajax
+    remotely or not. Below is the list of <br>
+    messages the gui will receive throughout all of the game. The
+    messages and data will be in javascript<br>
+    <br>
+    <br>
+    Game board In out API, also the API for the AI players<br>
+    <table style="text-align: left; width: 990px; height: 224px;"
+      border="1" cellpadding="2" cellspacing="2">
+      <thead> <tr>
+          <th>Name of message</th>
+          <th>What it is about</th>
+          <th>Data included in message</th>
+          <th>Outgoing message<br>
+            Name<br>
+          </th>
+          <th>What it is doing </th>
+          <th>Data Sent </th>
+        </tr>
+      </thead> <tbody>
+        <tr>
+          <td style="vertical-align: top;">map_data </td>
+          <td style="vertical-align: top;">The basic map information to
+            be able to draw the empty countries and oceans </td>
+          <td style="vertical-align: top;">array[x][y] for each square
+            in the game, values are country or ocean<span
+              style="mso-spacerun: yes">&nbsp; </span>codes ( region
+            codes) </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">player_data </td>
+          <td style="vertical-align: top;">The information for each
+            player </td>
+          <td style="vertical-align: top;">Array of objects: player
+            name, color, rank,picture url </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+            <p class="TableContents" style="layout-grid-mode:char">region_data</p>
+          </td>
+          <td style="vertical-align: top;">The information of each
+            country and ocean </td>
+          <td style="vertical-align: top;">
+            <p class="TableContents">Array keyed by region code :owner
+              player id, name of region,number of troops <br>
+              (-1 for owner means no one owns it)<br>
+            </p>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">new_game </td>
+          <td style="vertical-align: top;">To tell the gui a new game is
+            starting and to erase old game </td>
+          <td style="vertical-align: top;">your player id<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">no_game</td>
+          <td style="vertical-align: top;">To tell the gui there is no
+            game going on, and to show initial state</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">begin_turn</td>
+          <td style="vertical-align: top;">Signal that player is
+            beginning his turn, it will have more messages following it</td>
+          <td style="vertical-align: top;">round number, turn
+            number,player_id</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">end_turn<br>
+          </td>
+          <td style="vertical-align: top;">Signal that player has ended
+            his turn<br>
+          </td>
+          <td style="vertical-align: top;">ound number, turn number
+            playerid<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">begin_round</td>
+          <td style="vertical-align: top;">All of the players have each
+            gone. This is the end of the cycle</td>
+          <td style="vertical-align: top;">Round number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">end_round</td>
+          <td style="vertical-align: top;">All of the players have each
+            gone. Time for another cycle</td>
+          <td style="vertical-align: top;">Round number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">time_to_pick_capital</td>
+          <td style="vertical-align: top;">It is time for the player to
+            pick his capital</td>
+          <td style="vertical-align: top;">Round number,player_id</td>
+          <td style="vertical-align: top;">capital_picked</td>
+          <td style="vertical-align: top;">Telling which region the
+            player picked.<br>
+          </td>
+          <td style="vertical-align: top;">region id, player id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">capital</td>
+          <td style="vertical-align: top;">player or other chose a
+            capital</td>
+          <td style="vertical-align: top;">The player id, and the region
+            id</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">time_to_reinforce</td>
+          <td style="vertical-align: top;">It is time for the player to
+            pick a country to put new troops in</td>
+          <td style="vertical-align: top;">Number of new troops to
+            put,Round number</td>
+          <td style="vertical-align: top;">troops_reinforced</td>
+          <td style="vertical-align: top;">which country has troops
+            reinforced<br>
+          </td>
+          <td style="vertical-align: top;">The player id, region
+            id,&nbsp; </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">reinforcement</td>
+          <td style="vertical-align: top;">player or other reinforced</td>
+          <td style="vertical-align: top;">The player id, region id, new
+            troop number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">time_to_do_action</td>
+          <td style="vertical-align: top;">It is time for the player to
+            pick an action</td>
+          <td style="vertical-align: top;">Round number</td>
+          <td style="vertical-align: top;">action_made</td>
+          <td style="vertical-align: top;">what type of action, and the
+            region it is done to<br>
+          </td>
+          <td style="vertical-align: top;">only the region id. player id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">annexed</td>
+          <td style="vertical-align: top;">player or other annexed a
+            neutral country</td>
+          <td style="vertical-align: top;">Player id, region id,Round
+            number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">harbor</td>
+          <td style="vertical-align: top;">player or other player made a
+            harbor</td>
+          <td style="vertical-align: top;">Player id, region id,Round
+            number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">battle</td>
+          <td style="vertical-align: top;">There was a battle, either
+            involving the player, or other players</td>
+          <td style="vertical-align: top;">Region id, current owner id,
+            troop number,list of participating regions on both
+            sides,Round number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">time_to_move_troops</td>
+          <td style="vertical-align: top;">It is time for the player to
+            move troops</td>
+          <td style="vertical-align: top;">Round number</td>
+          <td style="vertical-align: top;">troops_moved</td>
+          <td style="vertical-align: top;">which troops are moved where<br>
+          </td>
+          <td style="vertical-align: top;">region from, troop #<br>
+            region to, player id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">moved_troops</td>
+          <td style="vertical-align: top;">player or other player moved
+            troops<br>
+          </td>
+          <td style="vertical-align: top;">Player id, region from id,
+            region from troop level, region to id, region to
+            troops.Round number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">player_eliminated</td>
+          <td style="vertical-align: top;">A player has all been
+            defeated</td>
+          <td style="vertical-align: top;">Player id, <br>
+            Array of all regions keyed by region code :owner player id,
+            name of region,number of troops <br>
+            (-1 for owner means no one owns it)<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">renamed_country</td>
+          <td style="vertical-align: top;">A country has been renamed</td>
+          <td style="vertical-align: top;">Player id that renamed region
+            id, new name</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">doing_country_rename<br>
+          </td>
+          <td style="vertical-align: top;">renames a region<br>
+            (player has to own it)<br>
+          </td>
+          <td style="vertical-align: top;">region id, new region name,
+            player id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">player_beginning_turn</td>
+          <td style="vertical-align: top;">Another player is beginning
+            turn</td>
+          <td style="vertical-align: top;">Player id, turn number, round
+            number<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">player_ending_turn</td>
+          <td style="vertical-align: top;">Another player is ending turn</td>
+          <td style="vertical-align: top;">Player id, turn number round
+            number<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">human_player_replaced</td>
+          <td style="vertical-align: top;">A human player resigned, and
+            is replaced by AI<br>
+          </td>
+          <td style="vertical-align: top;">Player id</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">AI_replaced</td>
+          <td style="vertical-align: top;">An AI has been replaced by a
+            human</td>
+          <td style="vertical-align: top;">Name, picture url, ranking</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">you_won</td>
+          <td style="vertical-align: top;">You have won the game</td>
+          <td style="vertical-align: top;">player id, turn number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">you_lost</td>
+          <td style="vertical-align: top;">You have been completely
+            eliminated</td>
+          <td style="vertical-align: top;">player id, turn number<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">you_resigned</td>
+          <td style="vertical-align: top;">You have resigned</td>
+          <td style="vertical-align: top;">player id, turn number</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">resign</td>
+          <td style="vertical-align: top;">player resigns from game<br>
+          </td>
+          <td style="vertical-align: top;">player id </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">save_game</td>
+          <td style="vertical-align: top;">game will be saved<br>
+          </td>
+          <td style="vertical-align: top;">saved in storage, or saved as
+            text<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">game_read_only</td>
+          <td style="vertical-align: top;">The player is not playing in
+            this game</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">you_got_kicked</td>
+          <td style="vertical-align: top;">The player has been kicked
+            out of the game</td>
+          <td style="vertical-align: top;">player id that kicked you<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">send_kick</td>
+          <td style="vertical-align: top;">admin kick another player<br>
+          </td>
+          <td style="vertical-align: top;">player id, kickee id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">you_got_warned</td>
+          <td style="vertical-align: top;">The player is being warned to
+            hurry up a turn</td>
+          <td style="vertical-align: top;">player id that kicked you</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">send_warn</td>
+          <td style="vertical-align: top;">admin warn another <br>
+          </td>
+          <td style="vertical-align: top;">warnee id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">take_over_AI<br>
+          </td>
+          <td style="vertical-align: top;">the user wants to take over
+            the AI player (only for read only games) works in single or
+            multiplayer mode<br>
+          </td>
+          <td style="vertical-align: top;">player id to take over<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">permission_ai_takeover<br>
+          </td>
+          <td style="vertical-align: top;">someone is asking the admin
+            for permission to play an ai player in the game<br>
+          </td>
+          <td style="vertical-align: top;">player_id to take over, info
+            about the human player:name, ranking, url pic...<br>
+          </td>
+          <td style="vertical-align: top;">answer_ai_takeover<br>
+          </td>
+          <td style="vertical-align: top;">admins decision for takeover<br>
+          </td>
+          <td style="vertical-align: top;">yes or no, player id of askee<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">answer_for_takeover<br>
+          </td>
+          <td style="vertical-align: top;">admin gave his answer<br>
+          </td>
+          <td style="vertical-align: top;">yes or no<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <h3> Game Set up Module</h3>
+    <p><br>
+    </p>
+    API<br>
+    <table style=" text-align: left; width: 100%;" border="1"
+      cellpadding="2" cellspacing="2">
+      <thead> <tr>
+          <th>Name of message</th>
+          <th>What it is about</th>
+          <th>Data included in message</th>
+          <th>Outgoing message<br>
+            Name<br>
+          </th>
+          <th>What it is doing </th>
+          <th>Data Sent </th>
+        </tr>
+      </thead> <tbody>
+        <tr>
+          <td style="vertical-align: top;">map_data </td>
+          <td style="vertical-align: top;">The basic map information to
+            be able to draw the empty countries and oceans </td>
+          <td style="vertical-align: top;">array[x][y] for each square
+            in the game, values are country or ocean<span
+              style="mso-spacerun: yes">&nbsp; </span>codes ( region
+            codes) </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">Make map<br>
+          </td>
+          <td style="vertical-align: top;">sending a map to be made<br>
+          </td>
+          <td style="vertical-align: top;">Data Struct for making a map:
+            x, y, islandStyle, coastPercentKeep, avgCountrySize,
+            countryProp, countryOddPercent, minLakeSize<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">Get map names<br>
+          </td>
+          <td style="vertical-align: top;">Getting a list of all
+            available maps<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">map names<br>
+          </td>
+          <td style="vertical-align: top;">a list of all names of the
+            maps available for player<br>
+          </td>
+          <td style="vertical-align: top;">array of names<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">Get Map Data<br>
+          </td>
+          <td style="vertical-align: top;">Get the map data for a
+            particular map<br>
+          </td>
+          <td style="vertical-align: top;">name of map<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">Translate game text data<br>
+          </td>
+          <td style="vertical-align: top;">User has posted base 64 game
+            data<br>
+          </td>
+          <td style="vertical-align: top;">The base 64 data of a whole
+            game or of a saved map<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">game_settings<br>
+          </td>
+          <td style="vertical-align: top;">a list of new setting to use<br>
+          </td>
+          <td style="vertical-align: top;">useCapitals, selectCapitals,
+            deathAction, reinforcements, ,navy, chance, resigning player
+            policy<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">Start_Game </td>
+          <td style="vertical-align: top;">Starts the game </td>
+          <td style="vertical-align: top;">the map data, useCapitals,
+            selectCapitals, deathAction, reinforcements, ,navy, chance,<br>
+            Type of game (solo, ranked, multi), resigning player<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <h3> The game controller</h3>
+    Is the part of the javascript in the page which makes it transparent
+    whether the game is coming from in browser or from a server. The
+    only message it really processes is the start_game_init message,
+    other than that it acts like a smart pointer. These messages are
+    posted in the order they would fire. Below, when all players is
+    said, it also means all computer players and AI as well <br>
+    <br>
+    <table style=" text-align: left; width: 100%;" border="1"
+      cellpadding="2" cellspacing="2">
+      <thead> <tr>
+          <th>Name of message</th>
+          <th>What it is about</th>
+          <th>Data included in message</th>
+          <th>Outgoing message<br>
+            Name<br>
+          </th>
+          <th>What it is doing </th>
+          <th>Data Sent </th>
+        </tr>
+      </thead> <tbody>
+        <tr>
+          <td style="vertical-align: top;">Start_Game </td>
+          <td style="vertical-align: top;">starts up the whole game,
+            makes an extended region data (which talks about neighbors),
+            if solo starts up the browser_game_controller, else starts
+            up the server_game_controller and passes the outbound
+            messages to them<br>
+          </td>
+          <td style="vertical-align: top;">map_data, player_data,
+            region_data, game_type (solo, ranked solo, mp ?),player_id </td>
+          <td style="vertical-align: top;">start_game_init<br>
+          </td>
+          <td style="vertical-align: top;">sending all the data to the
+            correct controller so they can initialize themselves, after
+            this all calls incoming and outgoing are really coming from
+            it,<br>
+          </td>
+          <td style="vertical-align: top;">map_data, player_data,
+            region_data, game_type, extended region data,player_id </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">new_game </td>
+          <td style="vertical-align: top;">tells the gui a new game is
+            starting<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">map_data, region_data,
+            player_data<br>
+          </td>
+          <td style="vertical-align: top;">To all players<br>
+          </td>
+          <td style="vertical-align: top;">all the information these
+            have<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">begin_round </td>
+          <td style="vertical-align: top;">the first round is beginning,
+            sent to all players<br>
+          </td>
+          <td style="vertical-align: top;">round number<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">begin_turn<br>
+          </td>
+          <td style="vertical-align: top;">your turn is starting<br>
+          </td>
+          <td style="vertical-align: top;">player_id , turn_number<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">player_beginning_turn</td>
+          <td style="vertical-align: top;">to all other players<br>
+          </td>
+          <td style="vertical-align: top;">player_id, turn number<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">time_to_pick_capital </td>
+          <td style="vertical-align: top;">time to pick the capital,
+            done once at the start of the game<br>
+          </td>
+          <td style="vertical-align: top;">Round number,player_id </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">capital_picked<br>
+          </td>
+          <td style="vertical-align: top;">a player has picked his
+            capital, so we will update the map and regions<br>
+          </td>
+          <td style="vertical-align: top;">region_id, player_id<br>
+          </td>
+          <td style="vertical-align: top;">end_turn<br>
+          </td>
+          <td style="vertical-align: top;">your turn is ending<br>
+          </td>
+          <td style="vertical-align: top;">player_id , turn_number </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">player_ending_turn<br>
+          </td>
+          <td style="vertical-align: top;">to all other players</td>
+          <td style="vertical-align: top;">player_id, turn number</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">capital</td>
+          <td style="vertical-align: top;">messsage sent to all players<br>
+          </td>
+          <td style="vertical-align: top;">player_id, region_id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">(repeat capital loop for
+            other players)</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">end_round<br>
+          </td>
+          <td style="vertical-align: top;">sent to all players<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">start of normal cycle<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">begin_round</td>
+          <td style="vertical-align: top;">everything in round loop is
+            sent one at a time, per loop, per player<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">begin_turn,
+            player_beginning_turn</td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">time_to_reinforce</td>
+          <td style="vertical-align: top;">tells the player its time to
+            put down troops<br>
+          </td>
+          <td style="vertical-align: top;">player_id, number of troops,
+            round number</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">troops_reinforced</td>
+          <td style="vertical-align: top;">tells where the player
+            reinforced at<br>
+          </td>
+          <td style="vertical-align: top;">player_id, region_id,
+            round_number<br>
+          </td>
+          <td style="vertical-align: top;">reinforce</td>
+          <td style="vertical-align: top;">sent to all players<br>
+            tells where reinforcement is<br>
+          </td>
+          <td style="vertical-align: top;">player_id, region_id,
+            round_number, number or troops<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">time_to_do_action</td>
+          <td style="vertical-align: top;">tells the player time to do
+            action<br>
+          </td>
+          <td style="vertical-align: top;">round number, player_id, turn
+            number<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">action_made</td>
+          <td style="vertical-align: top;">The player did an action,
+            look at region to see what they do<br>
+          </td>
+          <td style="vertical-align: top;">region_id, player_id, round
+            and turn numbers</td>
+          <td style="vertical-align: top;">annexed, harbor, or battle
+            message to all players<br>
+          </td>
+          <td style="vertical-align: top;">depends what they did, but
+            process it and send all players the results<br>
+          </td>
+          <td style="vertical-align: top;">player id, region id, and
+            other data depending on message<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">doing_country_rename</td>
+          <td style="vertical-align: top;">sometimes we get this
+            message, it can be at anytime during the players turn<br>
+          </td>
+          <td style="vertical-align: top;">player_id, region_id<br>
+          </td>
+          <td style="vertical-align: top;">renamed_country to all
+            players<br>
+          </td>
+          <td style="vertical-align: top;">tell everyone the region is
+            now a different name<br>
+          </td>
+          <td style="vertical-align: top;">region_id, new name<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">resign</td>
+          <td style="vertical-align: top;">a player resigned<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">you_resigned</td>
+          <td style="vertical-align: top;">tell they player he resigned<br>
+          </td>
+          <td style="vertical-align: top;">player_id, turn number<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">send_kick</td>
+          <td style="vertical-align: top;">admin is kicking player off</td>
+          <td style="vertical-align: top;">player_id</td>
+          <td style="vertical-align: top;">you_got_kicked to player</td>
+          <td style="vertical-align: top;">tell player they got kicked<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">save_game</td>
+          <td style="vertical-align: top;">player is saving and quiting<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">no_game</td>
+          <td style="vertical-align: top;">to player saving, also real
+            controller saves<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">player_eliminated to all
+            players<br>
+          </td>
+          <td style="vertical-align: top;">if a player is eliminated in
+            a battle or resigned, tell everyone<br>
+          </td>
+          <td style="vertical-align: top;">player_id, array of affected
+            regions, round_number, turn_number it happened in<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">human_player_replaced <br>
+            to all players (controller would also spawn new AI for
+            player and send all data init to it, it would wait for its
+            turn but immediately start procesing group messages)<br>
+          </td>
+          <td style="vertical-align: top;">depends if option to have AI
+            take over defeated human is on<br>
+          </td>
+          <td style="vertical-align: top;">player ID<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">you_lost, game_read_only</td>
+          <td style="vertical-align: top;">to the defeated, or kicked
+            player, unless they are saving<br>
+          </td>
+          <td style="vertical-align: top;">player_id, turn_number,
+            round_number<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">you_won<br>
+          </td>
+          <td style="vertical-align: top;">if that is the last player<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">end_turn, player_ending_turn<br>
+          </td>
+          <td style="vertical-align: top;">to all surving players<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">take_over_AI</td>
+          <td style="vertical-align: top;">human wants to take over ai
+            in game<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">if multiplayer,
+            permission_ai_takeover</td>
+          <td style="vertical-align: top;">to admin in game<br>
+          </td>
+          <td style="vertical-align: top;">player_id, human info of
+            player<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">answer_ai_takeover</td>
+          <td style="vertical-align: top;">admin gave his answer (no
+            answer after timeout means no)<br>
+          </td>
+          <td style="vertical-align: top;">yes or no,player id<br>
+          </td>
+          <td style="vertical-align: top;">answer_for_takeover</td>
+          <td style="vertical-align: top;">to player askee<br>
+          </td>
+          <td style="vertical-align: top;">yes or no<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">if yes to player taking over
+            or not multiplayer<br>
+            new_game and data to askee,<br>
+            AI_replaced to everyone else<br>
+          </td>
+          <td style="vertical-align: top;">let player start new game in
+            progress<br>
+          </td>
+          <td style="vertical-align: top;">data and messages for new
+            game<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">send_warn<br>
+          </td>
+          <td style="vertical-align: top;">admin is warning player<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">you_got_warned</td>
+          <td style="vertical-align: top;">to the player that got warned<br>
+          </td>
+          <td style="vertical-align: top;">id of admin<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">watcher_register<br>
+          </td>
+          <td style="vertical-align: top;">a watcher is registering,
+            gets all game init data and all broadcast messages.<br>
+            This is not part of the gameboard_gui.<br>
+            controller registers it<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">new_game and data and
+            game_read_only<br>
+            <br>
+          </td>
+          <td style="vertical-align: top;">tell watcher they got ok<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">unregister_watcher<br>
+          </td>
+          <td style="vertical-align: top;">watcher will no longer be
+            watching the game, not part of the game board_gui.<br>
+            controller unregisters it<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">no_game</td>
+          <td style="vertical-align: top;">sends watcher a no game
+            message<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">lost_player<br>
+          </td>
+          <td style="vertical-align: top;">this is sent to the
+            controller from the inner server if a ping is gone for too
+            long<br>
+          </td>
+          <td style="vertical-align: top;">player_id<br>
+          </td>
+          <td style="vertical-align: top;">lost_player<br>
+            human_player_replaced<br>
+            <br>
+          </td>
+          <td style="vertical-align: top;">to all remaining players, new
+            AI spawned to replace, if player reconnects, he can join
+            game gain<br>
+          </td>
+          <td style="vertical-align: top;">player_id</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">outgoing_message </td>
+          <td style="vertical-align: top;">this is sent from the chat
+            part of the gui<br>
+          </td>
+          <td style="vertical-align: top;">the string message, player id<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">packages message up for next
+            poll<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <h3>The browser game controller</h3>
+    <p>The javascript in the webpage is not delegating anything but
+      actively calling the other players and updating the data.<br>
+    </p>
+    <h3>The server game controller</h3>
+    <p>Is really nothing but a relay device, it sends all messages
+      through ajax. When it is not the human players turn, it polls the
+      server once every few seconds, and the server will bundle up all
+      the messages for it , from the last pull to the current, in one
+      package. The server game controller takes all of the messages and
+      passes them out, one by one. And it times it so the human player
+      can see all of the action in slow enough time.<br>
+    </p>
+    <ul>
+      <li>all messages to a multiplayer server is sent with a safety id
+        for the post Game Flow Messages</li>
+      <li>the safety id also is the key that unlocks the server's
+        response with the messages</li>
+      <li>safety ids time out after a while</li>
+      <li>when talking to the server, the player id is translated to a
+        more unique id, similarly when getting messages the player id is
+        transferred back to a simple number<br>
+      </li>
+      <li>the frequent polling of the server is also like a ping, to see
+        if players are still alive, if not the server will send lost
+        player message to the other players and will replace them with
+        an AI</li>
+      <li>all the messages to and from the server is packaged up as
+        json, and when the server gets messages, it will time out the
+        messages to the gui so that they are happening in real time.</li>
+      <li>chatting incoming messages to be relayed to the chat part will
+        be under the object key 'incoming_messages' and will be an array
+        of objects that will have message, who from, time in them, and
+        if the recipient list is restricted, the list of recipients as
+        an array of player ids.<br>
+      </li>
+      <li>chatting outgoing messages will be under the object key
+        'outgoing_messages'<br>
+      </li>
+    </ul>
+    <h3>The AI Player</h3>
+    <ul>
+      <li>Will be on the same machine as the real controller, so will
+        either be implemented in javascript or php.&nbsp;</li>
+      <li>implements the same API as the game board GUI<br>
+      </li>
+    </ul>
+    <br>
+    <h3>The Watchers</h3>
+    <ul>
+      <li>Player registers to watch, which does not need permission, and
+        is registered as a watcher on the multiplayer server.</li>
+      <li>A Watcher is a regular player but is passed a read only and
+        does not get anything but broadcast messages.</li>
+      <li>Watchers can poll the server every few seconds to get all the
+        information as regular.</li>
+    </ul>
+    <h3>The Chat</h3>
+    <ul>
+      <li>gui is a div that shows the messages in top newest order with
+        time, who from and message. <br>
+      </li>
+      <li>system messages will be marked in a special way, player
+        messages will be marked by the color of their game role</li>
+      <li>the chat system will be active during multi play, and will be
+        hidden elsewise.</li>
+      <li>private chatting is made by checking off who will not be
+        getting the messages</li>
+      <ul>
+        <li>If outgoing message is filtered, it will show up in the
+          other's box with the cc list next to it as square colors</li>
+        <li>click on recipients by clicking on their color, or clicking
+          on allies, all or none buttons<br>
+        </li>
+      </ul>
+      <li>to send a message, the player needs to type into the outgoing
+        box, and then, optionally, select the players it will go to.</li>
+      <li>a message objectl have message, who from, time in them, and if
+        the recipient list is restricted, the list of recipients as an
+        array of player ids</li>
+    </ul>
+    <p><a href="fracasChat.gif">Sketch of the chat gui</a><br>
+    </p>
+    <p>API</p>
+    <table style=" text-align: left; width: 100%;" border="1"
+      cellpadding="2" cellspacing="2">
+      <tbody>
+      </tbody><thead> <tr>
+          <th>Name of message</th>
+          <th>What it is about</th>
+          <th>Data included in message</th>
+          <th>Outgoing message<br>
+            Name<br>
+          </th>
+          <th>What it is doing </th>
+          <th>Data Sent </th>
+        </tr>
+      </thead> <tbody>
+        <tr>
+          <td style="vertical-align: top;">init_chatboard<br>
+          </td>
+          <td style="vertical-align: top;">tells the initial
+            information, like any messages and a player list<br>
+          </td>
+          <td style="vertical-align: top;">array of message objects,<br>
+            player_data<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">incoming_message<br>
+          </td>
+          <td style="vertical-align: top;">array of message objects<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;">outgoing_message </td>
+          <td style="vertical-align: top;">sending a message to the
+            controller<br>
+          </td>
+          <td style="vertical-align: top;">message object<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>
