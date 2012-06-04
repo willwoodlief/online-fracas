@@ -9,7 +9,7 @@ There is a specification, and you can get an overview of what I am trying to do.
 
 Credits:
 I am basing this javascript version of fracas, on the open source game written in Ruby, based on this site
-[[http://www.openfracas.org/]] , and on the origonal game of fracas at [[[[http://www.smozzie.com/fracas.html]]]]
+http://www.openfracas.org/ , and on the origonal game of fracas at http://www.smozzie.com/fracas.html
 
 License:
 and all code here will have the GPLv3 License .
