@@ -1,4 +1,4 @@
-OpenFracas-in-Javascript
+Online Fracas
 ========================
 
 Based on the open-source game named OpenFracas build in Ruby.
@@ -8,15 +8,14 @@ I started this project after I realized that javascript, html5 and modern browse
 There is a specification, and you can get an overview of what I am trying to do. But I wrote it more as a guide of what is going to be extra in the game besides open fracas, and does not cover the server side of things yet.
 
 Credits:
-I am basing this javascript version of OpenFracas, on the open source game written in Ruby, based on this site
-http://www.openfracas.org/ 
-and whatever is created here will have the same license 
+I am basing this javascript version of fracas, on the open source game written in Ruby, based on this site
+[[http://www.openfracas.org/]] , and on the origonal game of fracas at [[[[http://www.smozzie.com/fracas.html]]]]
+
+License:
+and all code here will have the GPLv3 License .
 
 
+Version History:
+   Version 0.1 (begining to be assembled)
 
-Version 0.1
-
-This is the initial start of the re-write of the ruby code. The goal here is to be able to draw the map, and save it to a stream of characters (base 32) that can be copied and pasted in to recreate the map. Map generation variables will be supported when creating new map.
-
-The basic format of the save string is designed to allow many things to be saved, not just the map, and to not crash the script if it has some element saved it does not understand.The save stream will be able to have add ons that if the program will not recognize, it will ignore and go the the next item in the stream. This way, we can have save games that will always be able to open, even after we add (hopefully) lots of items in other milestones. There will be options for the map like in the earlier game; but in this milestones only the options that changes the look and feel of the empty countries and the lakes.
 
