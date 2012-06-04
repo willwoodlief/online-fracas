@@ -8,10 +8,12 @@ I started this project after I realized that javascript, html5 and modern browse
 There is a specification, and you can get an overview of what I am trying to do. But I wrote it more as a guide of what is going to be extra in the game besides open fracas, and does not cover the server side of things yet.
 
 Credits:
+
 I am basing this javascript version of fracas, on the open source game written in Ruby, based on this site
 http://www.openfracas.org/ , and on the origonal game of fracas at http://www.smozzie.com/fracas.html
 
 License:
+
 and all code here will have the GPLv3 License .
 
 
