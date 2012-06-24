@@ -1,0 +1,427 @@
+ul.topmenu
+{
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+display:inline;
+
+}
+li.topmenu
+{
+float:right;
+}
+a.topmenu:link,a.topmenu:visited
+{
+display:block;
+width:90px;
+font-weight:bold;
+color:#FFFFFF;
+background-color:#98bf21;
+text-align:center;
+padding:4px;
+text-decoration:none;
+text-transform:uppercase;
+}
+a.topmenu:hover,a.topmenu:active
+{
+background-color:#7A991A;
+}
+
+.menu-fix
+{
+    padding:0px;
+    margin:0px;
+    display:inline;
+    position:absolute;
+    top:0px;
+    left:230px;
+}
+
+span.logo
+{
+    font-size:32px;
+    font-weight:bold;
+    color:#008080;
+}
+
+div.logo
+{
+    margin:10px;
+    margin-right: 20px;
+    display:inline;
+}
+
+div.headerbar
+{
+    position:absolute;
+    top:5px;
+    left:5px;
+    width:720px;
+    height:40px;
+    background-color:#c0c0c0;
+    display:inline;
+    
+}
+
+div.gameboard
+{
+    position:absolute;
+    top:50px;
+    left:5px;
+    width:700px;
+    height:425px;
+    background-color:white;
+    
+}
+
+div.intro-class
+{
+    
+
+    background-color:#004080;
+    height:425px;
+    width:700px;
+    
+    
+}
+
+div.story
+{
+    position:absolute;
+    top:50px;
+    left:50px;
+    width:200px;
+    height:225px;
+    
+    
+}
+
+div.start
+{
+    position:absolute;
+    top:50px;
+    left:300px;
+    
+    
+}
+
+
+
+div.describe
+{
+   position:absolute;
+    top:230px;
+    left:160px;
+    width:200px;
+    height:225px;
+    color:white;
+    padding:0px;
+    margin:0px;
+}
+
+.load-dialog-click-class {
+    position:absolute;
+    top:135px;
+    left:430px;
+    height:40px;
+}
+
+.hilite {
+    background-color:yellow;
+    color:black;
+}
+
+div.saved
+{
+    position:absolute;
+    top:175px;
+    left:430px;
+    
+    
+    background-color:#0000a0;
+    border:thin;
+    border-color:black;
+    color:#808080;
+    font-size:smaller;
+    padding:10px;
+    text-align:center;
+    overflow:auto;
+    
+}
+
+td.saved
+{
+    text-align:left;
+}
+
+p.load-link-class
+{
+    cursor:pointer;
+    text-decoration:underline;
+    color:white;
+    padding:0px;
+    margin:0px;
+}
+
+p.load-comment-class
+{
+    color:yellow;
+    padding:0px;
+    padding-left:10px;
+    margin:0px;
+}
+
+.setup-click
+{
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.map-tab-class
+{
+    
+    height:340px;
+}
+
+.map-instructions-class
+{
+   display:inline;
+   float:left;
+  
+}
+
+.mini-map-class
+{
+    display:inline;
+    float:right;
+    background-color:#bcbfac;
+    width:310px;
+    height:310px;
+    border-style:ridge;
+    border-bottom-width:2px;
+    border-color:#bcbfac;
+}
+
+.make-map-button-class
+{
+    margin:10px;
+    margin-left:50px;
+    
+}
+
+.refresh-map-class
+{
+    vertical-align:bottom;
+}
+
+.input-2
+{
+    width:2em;
+}
+
+.map-slider-buddy
+{
+    color:#f6931f;
+    font-weight:bold;
+    
+}
+
+.dialog-label
+{
+    font-weight:bold;
+    color:black;
+}
+
+.login-icons-class
+{
+    padding:0px;
+    margin:0px;
+    float:right;
+    margin-right:5px;
+    margin-top:5px;
+}
+
+.game-class
+{
+
+    background-color:white;
+    display:none;
+}
+
+.gamemap-class
+{
+    border:1px solid #d3d3d3;
+    position:absolute;
+    top:0px;
+    left:0px;
+    margin:0px;
+    padding:0px;
+    
+    
+}
+.mini-map-class
+{
+/*    border:4px dashed #FF0026; */
+background-color:white;
+    
+}
+
+.mini-map-div-class
+{
+    background-color:white;
+}
+
+.game-buttons-class
+{
+    position:absolute;
+    width:200px;
+    height:100px;
+    background-color:green;
+    left:605px;
+    top:0px;
+    margin:0px;
+    padding:0px;
+    
+}
+
+.player-list-class
+{
+    position:absolute;
+    width:200px;
+    height:400px;
+    background-color:yellow;
+    top:105px;
+    left:605px;
+    margin:0px;
+    padding:0px;
+    
+}
+
+
+
+.game-command-class
+{
+    padding-left:20px;
+    padding-top:5px;
+}
+
+.ItemActionButtons{}
+    .ItemActionButtons .SaveExtraOptions
+    {
+        display: none; list-style-type: none; padding: 5px; margin: 0; border: 1px solid #DCDCDC; background-color: #fff; z-index: 999; position: absolute;
+    }
+    .ItemActionButtons .SaveExtraOptions li
+    {
+        padding: 5px 3px 5px 3px; margin: 0; width: 150px; border: 1px solid #fff;
+    }
+    .ItemActionButtons .SaveExtraOptions li:hover
+    {
+        cursor: pointer;
+        background-color: #DCDCDC;
+    }
+    .ItemActionButtons .SaveExtraOptions li a
+    {
+        text-transform: none;
+    }
+
+
+.game-command-comments-class
+{
+    font-weight:bold;
+    color:black;
+    font-size:16px;
+    text-align:center;
+    margin:auto;
+    margin-top:10px;
+    word-wrap:normal;
+    padding:0px;
+}
+
+.move-troops-class
+{
+    position:absolute;
+    width:200px;
+    height:90px;
+    background-color:blue;
+    top:510px;
+    left:605px;
+    margin:0px;
+    padding:0px;
+}
+
+.country-info-class
+{
+    position:absolute;
+    width:200px;
+    height:100px;
+    background-color:orange;
+    top:0px;
+    left:810px;
+    margin:0px;
+    padding:0px;
+}
+
+.chat-screen-class
+{
+    position:absolute;
+    width:200px;
+    height:495px;
+    background-color:gray;
+    top:105px;
+    left:810px;
+    margin:0px;
+    padding:0px;
+}
+
+.save-string-show-class
+{
+    width:350px;
+    height:200px;
+    overflow-y:scroll;
+    text-wrap:unrestricted;
+    word-wrap:break-word;
+    
+}
+
+div.load
+{
+    overflow:auto;
+}
+
+textarea.load
+{
+    
+}
+
+.textarea-active
+{
+   background-color:white; 
+}
+
+p.load
+{
+    font-size:small;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:underline;
+    margin:0px;
+    padding:0px;
+    padding-bottom:3px;
+    color:red;
+    
+    
+}
+
+span.load
+{
+   font-size:small; 
+}
+
+td.load
+{
+    border-style:outset;
+}
+
+
+

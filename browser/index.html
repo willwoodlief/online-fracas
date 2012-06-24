@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>Online Fracas</title>
+    <meta content="Will Woodlief" name="author">
+    <meta name="keywords" content="game war wargame army country fight map friends solo">
+    <meta name="description" content="online fracas is a strategy war game that can
+                                      have a different map every time. Play it by yourself or friends.">
+    <meta name="robots" content="index,follow">
+      
+    <link rel="icon" href="res/pic/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    
+    <script src="res/script/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="res/script/themes/south-street/jquery-ui-1.8.20.custom.css" />
+  <script src="res/script/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+  <script src="res/script/json2.js" type="text/javascript"></script>
+   <script src="res/script/jszip.js" type="text/javascript"></script>
+   <script src="res/script/jszip-deflate.js" type="text/javascript"></script>
+   <script src="res/script/jszip-inflate.js" type="text/javascript"></script>
+   <script src="res/script/jszip-load.js" type="text/javascript"></script>
+    
+
+    <script src="index.js"  type="text/javascript"></script>
+    <script src="setup.js"  type="text/javascript"></script>
+    <script src="generateMap.js"  type="text/javascript"></script>
+    <script src="draw.js"  type="text/javascript"></script>
+    <script src="drawMap.js"  type="text/javascript"></script>
+    <script src="draw2.js"  type="text/javascript"></script>
+    
+</head>
+<body>
+  <div id='body'>
+  <div class="headerbar">
+    <div class="logo">
+      <span class="logo">Online Fracas</span>
+    </div>
+    <div class="menu-fix">
+      <ul class="topmenu">
+      <li class="topmenu"><a class="topmenu" href="#home">Login</a></li>
+      <li class="topmenu"><a class="topmenu" href="#news">Help</a></li>
+      <li class="topmenu"><a class="topmenu" href="#contact">Version</a></li>
+      <li class="topmenu"><a class="topmenu" href="#contact">Credits</a></li>
+      <li class="topmenu"><a class="topmenu" href="#about">About</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="gameboard">
+    
+    <div id="intro" class="intro-class">
+      <img src="res/pic/facebook.png" class="login-icons-class">
+      <img src="res/pic/twitter.png" class="login-icons-class">
+        <div class="story"><img src="res/pic/3countries.png"></div>
+        <div class="describe">The Fracas game has been around for a while.
+        It is similar in style, but not in specifics, to Risk.
+        On randomly generated and customizable maps, humans are pitted against other
+        humans and AIs in an attempt to eliminate all other players or teams.
+        </div>
+        <div class="start">
+          <button id='click-for-setup' class='setup-click'>start new game</button>
+        </div>
+	<div class='load-dialog-click-class'>
+	  <button id='click-for-load-dialog' >Load...</button>
+	</div>
+        <div class="saved" id="saved-link-list">No saved games yet</div>
+    </div>
+   <div id="game" class="game-class">
+    <canvas id='gamemap' class="gamemap-class" height="600px" width="600px" style="">
+      Your browser does not support this game
+    </canvas>
+    <div id="game-buttons" class="game-buttons-class buttonset ItemActionButtons">
+      <div id="my-button-holder" class="game-command-class">
+        <button id="game-command" class="">Command</button>
+        <button id="game-command-menu" class="">Select an action</button>
+        <ul class="SaveExtraOptions ui-corner-bottom" id="btnSaveExtraOptions">
+            <li onclick="$('#btnSaveExtraOptions').toggle(); mainObj.gameController.saveGame();">Save</li>
+	    <li onclick="$('#btnSaveExtraOptions').toggle(); mainObj.gameController.saveGameAs();">Save As..</li>
+	    <li onclick="$('#btnSaveExtraOptions').toggle(); mainObj.ShowSaveString();">Show Save String</li>
+            <li onclick="$('#btnSaveExtraOptions').toggle(); mainObj.NewGame();">New Game</li>
+            <li id="restart-option" onclick="$('#btnSaveExtraOptions').toggle(); mainObj.gameController.restartGame();">Restart Game</li>
+        </ul>
+
+      </div>
+      <p id="game-command-comments" class="game-command-comments-class">
+	No command yet
+	</p>
+    </div>
+    <div id="player-list" class="player-list-class">
+    </div>
+    <div id="move-troops-control" class="move-troops-class">
+    </div>
+    <div id="country-info" class="country-info-class">
+    </div>
+    <div id="chat-screen" class="chat-screen-class">
+    </div>
+    
+   </div>
+  </div>
+  </div>
+	
+     <div style="visibility:hidden">   
+<!--        Below is the forms and other things that are initiallzy invisible-->
+     <div id="messages-for-javascript" class="translation" style="display:none;visibility:hidden">
+       <span id='save-first' title="You need to save this game before viewing the text save"</span>
+     </div>
+     
+     <div id="game-setup-form" title="Game Set Up" style="margin:0px;padding:0px">
+	
+
+	
+        
+	<div id="setup-tabs" >
+            <ul>
+                    <li><a href="#tabs-map">Map</a></li>
+                    <li><a href="#tabs-players">Players</a></li>
+                    <li><a href="#tabs-capitals">Capitals</a></li>
+                    <li><a href="#tabs-military">Military</a></li>
+                    <li><a href="#tabs-display">Display</a></li>
+                    
+                    <li><a href="#tabs-load">Load</a></li>
+                    
+            </ul>
+            
+                    <div id="tabs-map" class="map-tab-class" >
+                      <div id='map-instructions' class="map-instructions-class">
+                        <table>
+                          <tbody>
+                          <tr>
+                      <td>Map Size (H x W)</td>
+                      <td>
+                      <input type="text" id="map-hi" class="input-2"  maxlength="2" value="99"/>
+                      X
+                      <input type="text" id="map-wide" class="input-2" maxlength="2"  value="99"/>
+                      </td>
+                          </tr>
+                          <tr>
+                            <td>
+                      
+                      Islands
+                            </td>
+                            <td>
+                      <select id='map-islands' class="">
+                        <option value='0'>Few</option>
+                        <option value='1' selected="selected">Average</option>
+                        <option value='2'>Many</option>
+                      </select>
+                      </td></tr><tr><td>
+                      Minimum Lake Size
+                      <span id="map-min-lake-size-amount" class="map-slider-buddy" ></span>
+                      </td><td>
+                      <div id='map-min-lake-size'></div>
+                      </td></tr><tr><td>
+                      Amount of Land
+                      <span id="map-percentage-land-amount" class="map-slider-buddy" ></span>
+                      %
+                      </td><td>
+                      
+                      <div id='map-percentage-land'></div>
+                      </td></tr><tr><td>
+                      Amount of Coast
+                      </td><td>
+                      <select id='map-coast' class="">
+                        <option value='0'>Very Little</option>
+                        <option value='1'>Little</option>
+                        <option value='2' selected="selected">Average</option>
+                        <option value='3'>Much</option>
+                        <option value='4'>Very Much</option>
+                      </select>
+                      </td></tr><tr><td>
+                      Country Average Size
+                      </td><td>
+                      <select id='map-country-size' class="">
+                        <option value='0'>Extremely Small</option>
+                        <option value='1'>Very Small</option>
+                        <option value='2'>Small</option>
+                        <option value='3' >Average</option>
+                        <option value='4' selected="selected">Large</option>
+                        <option value='5'>Very Large</option>
+                        <option value='6'>Extremely Large</option>
+                        <option value='7'>Giganta Huge</option>
+                      </select>
+                      </td></tr><tr><td>
+                      Country Size Variance &nbsp;&nbsp;&nbsp;
+                      </td><td>
+                      <select id='map-country-variance' class="">
+                        <option value='0'>No ne</option>
+                        <option value='1'>Very Little</option>
+                        <option value='2'>Little</option>
+                        <option value='3' selected="selected">Average</option>
+                        <option value='4'>Great</option>
+                        <option value='5'>Very Great</option>
+                       
+                      </select>
+                      </td></tr><tr><td>
+                      Country Shapes
+                      
+                      </td><td>
+                      <select id='map-country-shapes' class="">
+                        <option value='0'>Very Regular</option>
+                        <option value='1'>Regular</option>
+                        
+                        <option value='2' selected="selected">Average</option>
+                        <option value='3'>Irregular</option>
+                        <option value='4'>Very Irregular</option>
+                       
+                      </select>
+                      </td></tr>
+                          </tbody>
+                        </table>
+                        
+                          <span id="map-generate_button" class="make-map-button-class">
+                            <img src="res/pic/refresh.png" class="refresh-map-class">
+                              Generate Map
+                          </span>
+                      </div>
+                      <div id="mini-map" class="mini-map-div-class">
+			<canvas id="mini-map-canvas" class="mini-map-class" height="300px" width="300px" style=""></canvas>
+			
+		      </div>
+                        
+                    </div>
+            
+                    <div id="tabs-players">
+                     
+                        
+                    <br>
+                      <br>
+                    </div>
+                    <div id="tabs-capitals">
+                     
+                        
+                    </div>
+                    
+                    <div id="tabs-military">
+                        
+                    </div>
+                    
+                    <div id="tabs-display">
+                        
+                    </div>
+                    
+                    
+                    
+                    <div id="tabs-load">
+                      <table>
+                        <tr><td style="vertical-align:top;width:50%">
+                    <!--     list of previsous games here, both loaded from server and local-->
+                    <input type="radio" id='load-list-setup' name='choose-load' value='list'>
+                    <label for='load-list-setup'>Load from saved games</label><br>
+                    <div id="file-load-div" style="">
+                    <select id='saved_game_list'  class="" size='1'>
+                      <option value='' selected="selected">No Previous Games</option>
+                      
+                    </select>
+                    </div>
+                        </td><td style="vertical-align:top;width:50%">
+                    <!--      way to load text
+                    -->
+                    <input type="radio" id='load-string-setup' name='choose-load' value='string' checked="checked">
+                    <label for='load-string-setup'>Load from a saved game copied in</label>
+                    <div id="string-load-div">
+                    <textarea cols='30' rows='8'  id="game-setup-string" class="" ></textarea>
+                    </div>
+                        </td></tr>
+                        <tr>
+                          <td colspan='2'>
+                            <br><br>
+                            <div id='setup-load-options' style="display:inline">
+                              <input type="checkbox" id='load-map' name='setup-options' value='map' checked='checked'>
+                                <label for="load-map">Map</label>
+                              <input type="checkbox" id='load-players' name='setup-options' value='players'  checked='checked'>
+                                <label for="load-players">Players</label>
+                              <input type="checkbox" id='load-capitals' name='setup-options' value='capitals'  checked='checked'>
+                                <label for="load-capitals">Capitals</label>
+                              <input type="checkbox" id='load-military' name='setup-options' value='military'  checked='checked'>
+                              <label for="load-military">Military</label>
+                            </div>
+                            <button id="load-setttings" style="margin-left:60px">Load into settings</button>
+                          </td></tr>
+                      </table>
+                        
+                    </div>
+            </div>
+        
+</div>
+<!-- this is the dialog to confirm starting new game    -->
+<div id="dialog-confirm-new-game" title="Start a new game?" style="margin:0px;padding:0px">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+	  This will not save your current game.</p>
+</div>
+
+<!-- this is the dialog to save a game    -->
+<div id="dialog-save-game" title="Save game" style="margin:0px;padding:0px">
+  <table>
+    <tr>
+      <td>
+          <label for="save-name" class="dialog-label">Name</label><br>
+          <input type="text" id="save-name" class="" maxlength="100"   value=""/>
+      </td>
+      <td>
+        <label for="save-comments" class="dialog-label">comments</label><br>
+          <input type="text" id="save-comments" class="" maxlength="100"   value=""/>
+      </td>
+    </tr>
+  </table>
+    
+</div>
+
+<!-- this is the dialog show how a game saved    -->
+   <div id="dialog-did-save" title="The game is saved as text" style="margin:0px;padding:0px">
+    
+    <label for="save-string" class="dialog-label">This can be used to share and paste into game setup too</label><br>
+    <textarea id="save-string-show" class="save-string-show-class"></textarea>
+    
+   </div>
+   
+<!--   This is to manage loading games and saved games-->
+
+<div id="dialog-load-manager" title="Load Manager" style="margin:0px;padding:0px">
+  <table>
+    <tr>
+      <td>
+         <div id='list-saved-games' class='load'>
+	  <p title='string-custom-load-123' id='generate-load' class='load'>Paste Text To Load</p>
+	 </div>
+      </td>
+      <td>
+        <textarea id="zip-show-saved-game" class="load" readonly="readonly"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td class="load">
+	<span id="date-save" class="load"></span>
+      </td>
+      <td>
+	<span id="comment-save" class="load"></span>
+  </table>
+    
+</div>
+   </div><!-- end of div holding all the dialogs-->
+
+</body>
+</html>

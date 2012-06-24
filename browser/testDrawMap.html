@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>Test Shapes Fracas</title>
+    <meta content="Will Woodlief" name="author">
+    <meta name="keywords" content="game war wargame army country fight map friends solo">
+    <meta name="description" content="online fracas is a strategy war game that can
+                                      have a different map every time. Play it by yourself or friends.">
+    <meta name="robots" content="index,follow">
+      
+    <link rel="icon" href="res/pic/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    
+    <script src="res/script/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="res/script/themes/south-street/jquery-ui-1.8.20.custom.css" />
+  <script src="res/script/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+    <script src="res/script/json2.js" type="text/javascript"></script>
+    <script src="drawMap.js"  type="text/javascript"></script>
+    <script src="testDrawMap.js"  type="text/javascript"></script>
+    
+</head>
+<body onload="testLogic();">
+  <canvas id='testme'  height="610px" width="610px" style="border-style:none;border-width:2px;border-color:gray">
+  could not display
+  </canvas>
+  <button id="one-step" style="position:absolute; top:10px; left:650px">Do One</button>
+  <button id="draw-curves" style="position:absolute; top:10px; left:800px">Draw Curves</button>
+  <button id="draw-counties" style="position:absolute; top:10px; left:950px">Draw Countries</button>
+  <button id="setup-country" style="position:absolute; top:200px; left:650px">Set Up Country</button>
+  <p id="instructions" style="position:absolute; top:250px; left:650px; width:250px"></p>
+  <div id="choose-which-country" style="position:absolute; top:450px; left:650px;">
+        <label for='country-1'>White Country</label>
+    <input type="radio" id='country-1' name='choose-country' value='0'>
+        <label for='country-2'>Orange Country</label>
+    <input type="radio" id='country-2' name='choose-country' value='1'>
+        <label for='country-3'>Yellow Country</label>
+    <input type="radio" id='country-3' name='choose-country' value='2'>
+        <label for='country-4'>Cyan Country</label>
+    <input type="radio" id='country-4' name='choose-country' value='3'>
+         <label for='ocean'>Ocean</label>
+    <input type="radio" id='ocean' name='choose-country' value='1000000'>
+  </div>
+</body>
+</html>
